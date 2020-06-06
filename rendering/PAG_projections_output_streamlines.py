@@ -81,12 +81,26 @@ scene.add_streamlines(data, color = color_palette, show_injection_site = False, 
 # scene.cut_actors_with_plane("sagittal", showplane = False) 
 
 
-# # // EXPORT AS HTML //
+# # // EXPORT AS HTML // --------------- TO FIX
 # # Export to a .html file that can be opened in a browser to render an interactive brainrender scene
-# scene.export_for_web(save_folder) # <- you can pass a  filepath to specify where to save the scene
+# scene.export_for_web("output/test.html") # <- you can pass a  filepath to specify where to save the scene
 
 
-# // MAKE VIDEO // To add when it works
+# # // MAKE VIDEO //
+# # Create an instance of VideoMaker with our scene
+# vm = VideoMaker(scene,
+#     save_fld = save_folder, # folder where to save video
+#     save_name = "PAG_video", # video name
+#     #video_format = "mp4", # defaults to mp4
+#     #duration = 3, # video duration in seconds (defaults to 3)
+#     #niters = 60, # number of iterations (frames) when creating the video (defaults to 60)
+#     #fps = 30 # framerate of video (defaults to 30)
+#     ) 
+
+# # Make a video and specify how the scene rotates at each frame. You can also change several parameters (destination folder, video name, fps, duration, etc.) specified above
+# vm.make_video(azimuth = 1, elevation = 1, roll = 0, # rotation in degrees per frame on the relative axis    
+#     save_fld = save_folder, save_name = "PAG_video",
+#     video_format = "avi", duration = 5, niters = 50, fps = 30)
 
 
 # // RENDER INTERACTIVELY //
