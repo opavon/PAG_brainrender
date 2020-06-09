@@ -4,3 +4,5 @@
 *.mp4
 *.avi
 *.html
+*.code-workspace
+rendering/example_tutorial_fede.ipynb
