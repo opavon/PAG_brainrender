@@ -5,6 +5,7 @@
 import brainrender
 from brainrender.scene import Scene
 from brainrender.colors import makePalette
+from brainrender.animation.video import BasicVideoMaker as VideoMaker
 
 # // DEFAULT SETTINGS //
 # Change some of the default settings
