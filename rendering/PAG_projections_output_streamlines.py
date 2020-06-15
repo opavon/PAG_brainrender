@@ -17,6 +17,8 @@ brainrender.DEFAULT_SCREENSHOT_NAME = "PAG_streamlines" # screenshots will have 
 brainrender.DEFAULT_SCREENSHOT_TYPE = ".png" # png, svg or jpg supported
 brainrender.DEFAULT_SCREENSHOT_SCALE = 1 # values >1 yield higher resolution screenshots
 brainrender.SCREENSHOT_TRANSPARENT_BACKGROUND = True # whether to save screenshots with transparent background
+brainrender.INJECTION_VOLUME_SIZE = 120 # injection locations represented as spheres whose radius is injection-volume*INJECTION_VOLUME_SIZE
+brainrender.STREAMLINES_RESOLUTION = 3 # resolution of actors used to render the neuron
 
 
 # // SET PARAMETERS //
