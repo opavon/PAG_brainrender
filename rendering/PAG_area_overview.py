@@ -29,7 +29,7 @@ screenshot_params = dict(folder = save_folder, name = "PAG_overview")
 
 # // CREATE SCENE //
 # Create a scene with no title. You can also use scene.add_text to add other text elsewhere in the scene
-scene = Scene(display_inset = True, title = None, camera = "sagittal", screenshot_kwargs = screenshot_params) 
+scene = Scene(display_inset = True, title = None, camera = "sagittal", screenshot_kwargs = screenshot_params)
 
 
 # // ADD BRAIN REGIONS //
@@ -75,7 +75,7 @@ superior_colliculus = scene.add_brain_regions(["SCdg", "SCdw", "SCig", "SCiw", "
 # # Create an instance of VideoMaker with our scene
 # vm = VideoMaker(scene,
 #     save_fld = save_folder, # folder where to save video
-#     save_name = "PAG_video", # video name
+#     save_name = "PAG_video_areas", # video name
 #     #video_format = "mp4", # defaults to mp4
 #     #duration = 3, # video duration in seconds (defaults to 3)
 #     #niters = 60, # number of iterations (frames) when creating the video (defaults to 60)
@@ -84,7 +84,7 @@ superior_colliculus = scene.add_brain_regions(["SCdg", "SCdw", "SCig", "SCiw", "
 
 # # Make a video and specify how the scene rotates at each frame. You can also change several parameters (destination folder, video name, fps, duration, etc.) specified above
 # vm.make_video(azimuth = 1, elevation = 1, roll = 0, # rotation in degrees per frame on the relative axis    
-#     save_fld = save_folder, save_name = "PAG_video",
+#     save_fld = save_folder, save_name = "PAG_video_areas",
 #     video_format = "avi", duration = 5, niters = 50, fps = 30)
 
 
