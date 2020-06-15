@@ -24,7 +24,7 @@ brainrender.SCREENSHOT_TRANSPARENT_BACKGROUND = True # whether to save screensho
 save_folder = "D:/Dropbox (UCL - SWC)/Project_transcriptomics/analysis/PAG_scRNAseq_brainrender/output"
 
 # Create screenshot parameters
-screenshot_params = dict(folder = save_folder, name = "PAG_overview")
+screenshot_params = dict(folder = save_folder, name = "PAG_streamlines")
 
 
 # // CREATE SCENE //
@@ -39,7 +39,8 @@ filepaths, data = scene.atlas.download_streamlines_for_region("PAG")
 
 
 # // ADD BRAIN REGIONS //
-scene.add_brain_regions(["PAG"], alpha = 0.4, color = "darkgoldenrod", add_labels = False, use_original_color = False, wireframe = False)
+pag = scene.add_brain_regions(["PAG"],
+    alpha = 0.4, color = "darkgoldenrod", add_labels = False, use_original_color = False, wireframe = False)
 
 
 # # // OPTION A // Color each streamline with a different color //

@@ -24,7 +24,7 @@ brainrender.SCREENSHOT_TRANSPARENT_BACKGROUND = True # whether to save screensho
 save_folder = "D:/Dropbox (UCL - SWC)/Project_transcriptomics/analysis/PAG_scRNAseq_brainrender/output"
 
 # Create screenshot parameters
-screenshot_params = dict(folder = save_folder, name = "PAG_overview")
+screenshot_params = dict(folder = save_folder, name = "PAG_tractography")
 
 
 # // CREATE SCENE //
@@ -84,7 +84,7 @@ scene.add_tractography(tract,
 # # Create an instance of VideoMaker with our scene
 # vm = VideoMaker(scene,
 #     save_fld = save_folder, # folder where to save video
-#     save_name = "PAG_video", # video name
+#     save_name = "PAG_video_tractography", # video name
 #     #video_format = "mp4", # defaults to mp4
 #     #duration = 3, # video duration in seconds (defaults to 3)
 #     #niters = 60, # number of iterations (frames) when creating the video (defaults to 60)
@@ -93,7 +93,7 @@ scene.add_tractography(tract,
 
 # # Make a video and specify how the scene rotates at each frame. You can also change several parameters (destination folder, video name, fps, duration, etc.) specified above
 # vm.make_video(azimuth = 1, elevation = 1, roll = 0, # rotation in degrees per frame on the relative axis    
-#     save_fld = save_folder, save_name = "PAG_video",
+#     save_fld = save_folder, save_name = "PAG_video_tractography",
 #     video_format = "avi", duration = 5, niters = 50, fps = 30)
 
 
