@@ -3,39 +3,42 @@
 """
 
 import brainrender
-from brainrender.scene import Scene
-from brainrender.colors import makePalette
-from brainrender.atlases.mouse import ABA
-from brainrender.animation.video import BasicVideoMaker as VideoMaker
+from brainrender import Scene, Animation
+from vedo import settings as vsettings
+from brainrender.video import VideoMaker
 
 # // DEFAULT SETTINGS //
+# You can see all the default settings here: https://github.com/brainglobe/brainrender/blob/19c63b97a34336898871d66fb24484e8a55d4fa7/brainrender/settings.py
+
+# --------------------------- brainrender settings --------------------------- #
 # Change some of the default settings
-brainrender.SHADER_STYLE = "cartoon" # affects the look of rendered brain regions, values can be: ["metallic", "plastic", "shiny", "glossy", "cartoon"] and can be changed in interactive mode
-brainrender.BACKGROUND_COLOR = "white" # color of the background window (defaults to "white", try "blackboard")
-brainrender.ROOT_COLOR = [0.4, 0.4, 0.4] # color of the overall brain model's actor (defaults to [0.4, 0.4, 0.4])
-brainrender.ROOT_ALPHA = 0.2 # transparency of the overall brain model's actor (defaults to 0.2)
-brainrender.DEFAULT_SCREENSHOT_NAME = "PAG_tractography" # screenshots will have this name and the time at which they were taken
-brainrender.DEFAULT_SCREENSHOT_TYPE = ".png" # png, svg or jpg supported
-brainrender.DEFAULT_SCREENSHOT_SCALE = 1 # values >1 yield higher resolution screenshots
-brainrender.SCREENSHOT_TRANSPARENT_BACKGROUND = True # whether to save screenshots with transparent background
-brainrender.INJECTION_VOLUME_SIZE = 120 # injection locations represented as spheres whose radius is injection-volume*INJECTION_VOLUME_SIZE
-brainrender.TRACTO_RADIUS = 20 # radius of tubes used to represent tracts
-brainrender.TRACTO_ALPHA = 1 # transparency of tracts
-brainrender.TRACTO_RES = 12 # resolution of tubes used to represent tracts
-brainrender.STREAMLINES_RESOLUTION = 3 # resolution of actors used to render the neuron
+brainrender.settings.BACKGROUND_COLOR = "white" # color of the background window (defaults to "white", try "blackboard")
+brainrender.settings.DEFAULT_ATLAS = "allen_mouse_25um"  # default atlas
+brainrender.settings.DEFAULT_CAMERA = "three_quarters"  # Default camera settings (orientation etc. see brainrender.camera.py)
+brainrender.settings.INTERACTIVE = False  # rendering interactive ?
+brainrender.settings.LW = 2  # e.g. for silhouettes
+brainrender.settings.ROOT_COLOR = [0.4, 0.4, 0.4]   # color of the overall brain model's actor (defaults to [0.8, 0.8, 0.8])
+brainrender.settings.ROOT_ALPHA = 0.2  # transparency of the overall brain model's actor (defaults to 0.2)
+brainrender.settings.SCREENSHOT_SCALE = 1 # values >1 yield higher resolution screenshots
+brainrender.settings.SHADER_STYLE = "cartoon" # affects the look of rendered brain regions, values can be: ["metallic", "plastic", "shiny", "glossy", "cartoon"] and can be changed in interactive mode
+brainrender.settings.SHOW_AXES = False
+brainrender.settings.WHOLE_SCREEN = True # If true render window is full screen
+brainrender.settings.OFFSCREEN = False
+
+# ------------------------------- vedo settings ------------------------------ #
+# For transparent background with screenshots
+vsettings.screenshotTransparentBackground = True  # vedo for transparent bg
+vsettings.useFXAA = False  # This needs to be false for transparent bg
 
 
 # // SET PARAMETERS //
 # Save folder
-save_folder = "D:/Dropbox (UCL - SWC)/Project_transcriptomics/analysis/PAG_scRNAseq_brainrender/output"
-
-# Create screenshot parameters
-screenshot_params = dict(folder = save_folder, name = "PAG_tractography")
+save_folder = r"D:\Dropbox (UCL)\Project_transcriptomics\analysis\PAG_scRNAseq_brainrender\output"
 
 
 # // CREATE SCENE //
 # Create a scene with no title. You can also use scene.add_text to add other text elsewhere in the scene
-scene = Scene(display_inset = True, title = None, camera = "sagittal", screenshot_kwargs = screenshot_params) 
+scene = Scene(root = True, atlas_name = 'allen_mouse_10um', inset = False, title = 'PAG_areas_overview', screenshots_folder = save_folder, plotter = None)
 
 
 # // GET CENTER OF MASS AND PROJECTIONS TO IT //
@@ -76,33 +79,6 @@ scene.add_tractography(tract,
     ##(ZI) -- Zona incerta
 
 
-# # // CUT SCENE IN HALF AT DESIRED PLANE //
-# # Cut scene in half (set showplane = True if you want to see the plane location)
-# scene.cut_actors_with_plane("sagittal", showplane = False) 
-
-
-# # // EXPORT AS HTML //
-# # Export to a .html file that can be opened in a browser to render an interactive brainrender scene
-# scene.export_for_web("output/PAG_tractography.html") # you can pass a filepath where to save the scene
-
-
-# # // MAKE VIDEO //
-# # Create an instance of VideoMaker with our scene
-# vm = VideoMaker(scene,
-#     save_fld = save_folder, # folder where to save video
-#     save_name = "PAG_video_tractography", # video name
-#     #video_format = "mp4", # defaults to mp4
-#     #duration = 3, # video duration in seconds (defaults to 3)
-#     #niters = 60, # number of iterations (frames) when creating the video (defaults to 60)
-#     #fps = 30 # framerate of video (defaults to 30)
-#     ) 
-
-# # Make a video and specify how the scene rotates at each frame. You can also change several parameters (destination folder, video name, fps, duration, etc.) specified above
-# vm.make_video(azimuth = 1, elevation = 1, roll = 0, # rotation in degrees per frame on the relative axis    
-#     save_fld = save_folder, save_name = "PAG_video_tractography",
-#     video_format = "avi", duration = 5, niters = 50, fps = 30)
-
-
 # // RENDER INTERACTIVELY //
 # Render interactively. You can press "s" to take a screenshot
-scene.render(interactive = True, video = False, camera = "sagittal", zoom = 1)
+scene.render(interactive = True, camera = "sagittal", zoom = 1)
