@@ -1,0 +1,4 @@
+# pip install brainrender
+# pip install ffmpeg
+# pip install ipyvtklink
+# pip install ipykernel
