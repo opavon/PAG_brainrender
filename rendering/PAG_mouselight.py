@@ -1,13 +1,14 @@
 """
     Download neurons from the MouseLight datase with morphapi and render them with a custom color palette
     We can also manually download data from the neuronbrowser website and render by passing the downloaded files to "scene.add_neurons"
+    From brainrender example: https://github.com/brainglobe/brainrender/blob/19c63b97a34336898871d66fb24484e8a55d4fa7/examples/neurons.py
 """
 
 import brainrender
 from brainrender.scene import Scene
 from brainrender.colors import makePalette
 from morphapi.api.mouselight import MouseLightAPI
-from brainrender.animation.video import BasicVideoMaker as VideoMaker
+from brainrender.video import VideoMaker
 
 
 # // DEFAULT SETTINGS //
