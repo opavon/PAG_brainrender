@@ -65,7 +65,7 @@ scene = Scene(root = True, atlas_name = 'allen_mouse_10um', inset = False, title
 # Add brain regions with scene.add_brain_regions
 pag = scene.add_brain_region("PAG", alpha = 0.4, color = "darkgoldenrod", silhouette = None, hemisphere = "both")
 dorsal_raphe = scene.add_brain_region("DR", alpha = 0.4, color = "olivedrab", silhouette = None, hemisphere = "both")
-superior_colliculus = scene.add_brain_region("SCdg", "SCdw", "SCig", "SCiw", "SCm", "SCop", "SCs", "SCsg", "SCzo", alpha = 0.4, color = "olivedrab", silhouette = None, hemisphere = "both")
+superior_colliculus = scene.add_brain_region("SCm", alpha = 0.4, color = "olivedrab", silhouette = None, hemisphere = "both")
 
 
 # # // ADD LABELS //
@@ -168,3 +168,11 @@ scene.render(interactive = True, camera = "sagittal", zoom = 1)
 #     "clippingRange": (31983, 76783),
 # }
 # scene.render(interactive = True, camera = custom_camera, zoom = 1)
+
+# # // RENDER AND TAKE A SCREENSHOT //
+# # First define a custom camera by rendering it interactively and pressing 'c'. Then define a custom_camera as above. Once you have this, you can render the scene and then run the screenshot function. Screenshots will be saved in the screenshots_folder specified when first creating the scene.
+# scene.render(interactive = False, camera = custom_camera, zoom = 1)
+# scene.screenshot(
+#     name = 'filename', # name of png file
+#     scale = 1 # >1 for higher resolution
+#     )
